@@ -8,6 +8,7 @@ import { useMatch } from '@/lib/match-context';
 import MatchScoreBoard from '@/components/match-scoreboard';
 import { ServingPlayer } from '@/lib/types';
 import { TennisBallIcon } from './Icons';
+import Image from 'next/image';
 
 export default function MatchSetup() {
   const { state, dispatch } = useMatch();
@@ -34,69 +35,76 @@ export default function MatchSetup() {
   };
 
   return (
-    <div className="container court-pattern">
-      <div className="header">
-        <h1 className="text-xl font-bold text-center flex items-center justify-center">
-          <TennisBallIcon size={20} className="mr-2 text-primary" />
-          Umpire Buddy
-        </h1>
-      </div>
+    <div className="w-full min-h-screen court-pattern">
+      <div className="container">
+        <div className="header">
+          <div className="flex justify-center items-center">
+            <Image 
+              src="/umpire-buddy-logo-transparent-bg.png" 
+              alt="Umpire Buddy" 
+              width={150} 
+              height={60} 
+              className="h-auto"
+            />
+          </div>
+        </div>
 
-      <Card className="w-full border-border shadow-sm">
-        <CardHeader className="text-center pb-2">
-          <h2 className="text-xl font-semibold tracking-tight text-white">New Match Setup</h2>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="player1" className="text-white">Player 1</Label>
-            <Input
-              id="player1"
-              placeholder="Enter player 1 name"
-              value={player1Name}
-              onChange={(e) => setPlayer1Name(e.target.value)}
-              className="bg-white text-black placeholder:text-gray-500 h-12"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="player2" className="text-white">Player 2</Label>
-            <Input
-              id="player2"
-              placeholder="Enter player 2 name"
-              value={player2Name}
-              onChange={(e) => setPlayer2Name(e.target.value)}
-              className="bg-white text-black placeholder:text-gray-500 h-12"
-            />
-          </div>
-          
-          <div className="space-y-2 pt-2 sm:pt-4">
-            <Label className="text-white">Who serves first?</Label>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-              <button
-                type="button"
-                className={`flex-1 btn touch-button ${firstServer === 1 ? 'player1-bg' : 'btn-secondary'}`}
-                onClick={() => setFirstServer(1)}
-              >
-                {player1Name || 'Player 1'}
-              </button>
-              <button
-                type="button"
-                className={`flex-1 btn touch-button ${firstServer === 2 ? 'player2-bg' : 'btn-secondary'}`}
-                onClick={() => setFirstServer(2)}
-              >
-                {player2Name || 'Player 2'}
-              </button>
+        <Card className="w-full border-border shadow-sm">
+          <CardHeader className="text-center pb-2">
+            <h2 className="text-xl font-semibold tracking-tight text-white">New Match Setup</h2>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="player1" className="text-white">Player 1</Label>
+              <Input
+                id="player1"
+                placeholder="Enter player 1 name"
+                value={player1Name}
+                onChange={(e) => setPlayer1Name(e.target.value)}
+                className="bg-white text-black placeholder:text-gray-500 h-12"
+              />
             </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <button 
-            className="w-full btn btn-primary touch-button" 
-            onClick={handleStartMatch}
-          >
-            Start Match
-          </button>
-        </CardFooter>
-      </Card>
+            <div className="space-y-2">
+              <Label htmlFor="player2" className="text-white">Player 2</Label>
+              <Input
+                id="player2"
+                placeholder="Enter player 2 name"
+                value={player2Name}
+                onChange={(e) => setPlayer2Name(e.target.value)}
+                className="bg-white text-black placeholder:text-gray-500 h-12"
+              />
+            </div>
+            
+            <div className="space-y-2 pt-2 sm:pt-4">
+              <Label className="text-white">Who serves first?</Label>
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                <button
+                  type="button"
+                  className={`flex-1 btn touch-button ${firstServer === 1 ? 'player1-bg' : 'btn-secondary'}`}
+                  onClick={() => setFirstServer(1)}
+                >
+                  {player1Name || 'Player 1'}
+                </button>
+                <button
+                  type="button"
+                  className={`flex-1 btn touch-button ${firstServer === 2 ? 'player2-bg' : 'btn-secondary'}`}
+                  onClick={() => setFirstServer(2)}
+                >
+                  {player2Name || 'Player 2'}
+                </button>
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <button 
+              className="w-full btn btn-primary touch-button" 
+              onClick={handleStartMatch}
+            >
+              Start Match
+            </button>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   );
 } 

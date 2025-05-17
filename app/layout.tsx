@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-background text-foreground font-sans touch-action-manipulation">
+      <body className="bg-background text-foreground font-sans better-touch">
         <div className="min-h-screen">
           {children}
         </div>
