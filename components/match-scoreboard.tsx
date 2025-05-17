@@ -53,31 +53,20 @@ export default function MatchScoreBoard() {
           </div>
         </div>
         
-        {/* Match Info and Serving Info combined in one row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
-          {/* Match Info */}
-          <div className="match-info set-card rounded-lg shadow-md border border-primary p-2">
-            <div className="flex justify-between items-center flex-wrap gap-2">
-              <div className="flex items-center">
-                <CourtIcon size={16} className="mr-1 text-primary" />
-                <span className="highlight-text">Points: {state.totalPoints}</span>
-              </div>
-              {state.pointsUntilEndSwitch > 0 ? (
-                <div className="highlight-text">
-                  {state.pointsUntilEndSwitch} more {state.pointsUntilEndSwitch === 1 ? 'point' : 'points'} to switch
-                </div>
-              ) : (
-                <div className="alert-bg px-2 py-1 rounded-md font-bold">Switch ends now!</div>
-              )}
+        {/* Match Info */}
+        <div className="match-info">
+          <div className="flex justify-between items-center flex-wrap gap-2">
+            <div className="flex items-center">
+              <CourtIcon size={16} className="mr-1 text-primary" />
+              <span className="highlight-text">Points: {state.totalPoints}</span>
             </div>
-          </div>
-
-          {/* Serving Info */}
-          <div className="set-card rounded-lg shadow-md border border-primary p-2">
-            <p className="flex items-center justify-center flex-wrap h-full">
-              <TennisBallIcon size={24} className="mr-2 text-primary" />
-              <span className="highlight-text text-sm sm:text-base md:text-lg font-bold">{servingPlayerName} serves from the {state.servingSide} side</span>
-            </p>
+            {state.pointsUntilEndSwitch > 0 ? (
+              <div className="highlight-text">
+                {state.pointsUntilEndSwitch} more {state.pointsUntilEndSwitch === 1 ? 'point' : 'points'} to switch
+              </div>
+            ) : (
+              <div className="alert-bg px-2 py-1 rounded-md font-bold">Switch ends now!</div>
+            )}
           </div>
         </div>
 
@@ -114,6 +103,14 @@ export default function MatchScoreBoard() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Serving Info - More responsive */}
+        <div className="set-card mb-3 sm:mb-4 text-center rounded-lg shadow-md border border-primary">
+          <p className="flex items-center justify-center flex-wrap">
+            <TennisBallIcon size={24} className="mr-2 text-primary" />
+            <span className="highlight-text text-sm sm:text-base md:text-lg font-bold">{servingPlayerName} serves from the {state.servingSide} side</span>
+          </p>
         </div>
 
         {/* Point Scoring Buttons */}
