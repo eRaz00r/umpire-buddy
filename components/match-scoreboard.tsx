@@ -42,7 +42,7 @@ export default function MatchScoreBoard() {
       <div className="header">
         <h1 className="text-xl font-bold text-center flex items-center justify-center">
           <TennisBallIcon size={20} className="mr-2 text-primary" />
-          Tennis Match
+          Umpire Buddy
         </h1>
       </div>
       
