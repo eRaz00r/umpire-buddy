@@ -7,7 +7,6 @@ import { Label } from '@/components/ui/label';
 import { useMatch } from '@/lib/match-context';
 import MatchScoreBoard from '@/components/match-scoreboard';
 import { ServingPlayer } from '@/lib/types';
-import { TennisBallIcon } from './Icons';
 import Image from 'next/image';
 
 export default function MatchSetup() {

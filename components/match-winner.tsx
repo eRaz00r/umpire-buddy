@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useMatch } from '@/lib/match-context';
-import { TennisBallIcon, TimerIcon } from './Icons';
+import { TimerIcon } from './Icons';
 import Image from 'next/image';
 
 export default function MatchWinner() {
