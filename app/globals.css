@@ -1,0 +1,400 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: 213 85% 12%;      /* US Open deep blue background */
+  --foreground: 0 0% 95%;         /* Off-white text for readability */
+  --card: 213 75% 16%;            /* Slightly lighter blue for cards */
+  --card-foreground: 0 0% 95%;    /* Off-white text on cards */
+  --popover: 213 75% 16%;         /* Match card background */
+  --popover-foreground: 0 0% 95%;
+  --primary: 55 90% 55%;          /* US Open yellow */
+  --primary-foreground: 213 85% 12%; /* Deep blue text on yellow */
+  --secondary: 213 70% 25%;       /* Mid-blue for secondary elements */
+  --secondary-foreground: 0 0% 95%;
+  --muted: 213 60% 20%;           /* Subtle backgrounds */
+  --muted-foreground: 213 30% 70%;/* Muted text that's still readable */
+  --accent: 55 90% 55%;           /* US Open yellow accent */
+  --accent-foreground: 213 85% 12%; /* Deep blue text on yellow */
+  --destructive: 0 85% 45%;       /* Red for destructive actions */
+  --destructive-foreground: 0 0% 95%;
+  --border: 213 50% 22%;          /* Subtle border */
+  --input: 213 60% 20%;           /* Slightly visible input fields */
+  --ring: 55 90% 55%;             /* Yellow focus rings */
+  
+  /* Tennis app specific colors */
+  --player1: 213 80% 45%;         /* US Open blue */
+  --player1-foreground: 0 0% 95%;
+  --player2: 0 85% 45%;           /* Red (sometimes used as accent) */
+  --player2-foreground: 0 0% 95%;
+  --alert: 0 85% 45%;             /* Red for alerts */
+  --alert-foreground: 0 0% 95%;
+  --subtle-bg: 213 50% 18%;       /* Subtle background */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground h-full font-sans antialiased;
+  }
+  html {
+    @apply h-full;
+  }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold tracking-tight;
+}
+
+/* Tennis app specific styles */
+.player1-bg {
+  background-color: hsl(var(--player1));
+  color: hsl(var(--player1-foreground));
+}
+
+.player2-bg {
+  background-color: hsl(var(--player2));
+  color: hsl(var(--player2-foreground));
+}
+
+.alert-bg {
+  background-color: hsl(var(--alert));
+  color: hsl(var(--alert-foreground));
+}
+
+.subtle-bg {
+  background-color: hsl(var(--subtle-bg));
+}
+
+/* Component Styles */
+
+/* Score Display */
+.score-display {
+  @apply text-[3rem] font-extrabold tracking-tight text-center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  border-bottom: 3px solid hsl(var(--primary));
+  border-radius: 0 0 4px 4px;
+  color: hsl(var(--primary)); /* US Open yellow color for scores */
+}
+
+.current-set {
+  @apply bg-muted;
+  border: 1px solid hsl(var(--primary));
+}
+
+.serving-indicator {
+  @apply inline-block relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 5px hsl(var(--primary));
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 hsla(55, 100%, 60%, 0.9);
+  }
+  
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 6px hsla(55, 100%, 60%, 0.2);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 hsla(55, 100%, 60%, 0);
+  }
+}
+
+/* Player Cards */
+.player-card {
+  @apply rounded-lg p-3 relative;
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 1;
+}
+
+.player1-card::before {
+  background-color: hsl(var(--player1));
+}
+
+.player2-card::before {
+  background-color: hsl(var(--player2));
+}
+
+.player-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, 
+    hsla(var(--background), 0.7), 
+    transparent
+  );
+  z-index: 0;
+  opacity: 0.1;
+}
+
+.player-name {
+  @apply text-[1.25rem] font-bold tracking-wide text-center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Buttons */
+.btn {
+  @apply rounded-lg py-2 px-4 font-bold transition-all;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0,0,0,0.15);
+  z-index: -1;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: hsl(var(--primary));
+  border: 2px solid hsl(var(--primary));
+  font-weight: 700;
+}
+
+.btn-large {
+  @apply text-[1.125rem] py-3 px-6 uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Layout */
+.container {
+  @apply p-4 mx-auto max-w-3xl;
+}
+
+.header {
+  @apply w-full py-3 px-4 mb-4;
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.match-info {
+  @apply p-3 rounded-lg mb-4;
+  background-color: hsl(var(--subtle-bg));
+  border: 1px solid hsl(var(--border));
+}
+
+.set-card {
+  @apply p-2 rounded-lg my-2 border;
+  background-color: hsl(var(--card));
+  border-color: hsl(var(--primary));
+  border-width: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Add a special class for scores */
+.score-value {
+  color: hsl(var(--primary));
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Add a special highlight for the active score */
+.active-score {
+  background-color: hsla(var(--primary), 0.15);
+  border-radius: 4px;
+  padding: 2px 6px;
+  position: relative;
+}
+
+.active-score::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: hsl(var(--primary));
+}
+
+/* Highlight class for important numbers */
+.highlight-text {
+  color: hsl(var(--primary));
+  font-weight: bold;
+}
+
+/* Animations */
+.score-change {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+.point-won {
+  animation: flash 0.8s;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Background pattern */
+.court-pattern {
+  background-color: hsl(var(--background));
+  background-image: 
+    linear-gradient(0deg, hsla(55, 90%, 55%, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(55, 90%, 55%, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+
+/* Large text for outdoor visibility */
+.large-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.score-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  color: hsl(var(--primary)); /* US Open yellow */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.huge-text {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: hsl(var(--primary)); /* US Open yellow */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Touch-friendly elements */
+.touch-button {
+  @apply py-4 px-6 text-xl font-bold rounded-lg;
+  min-height: 3.5rem;
+}
+
+/* Better mobile touch behavior */
+.touch-action-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* US Open specific styles */
+.us-open-header {
+  position: relative;
+  overflow: hidden;
+  background-color: hsl(var(--card));
+  border-bottom: 3px solid hsl(var(--primary));
+}
+
+.us-open-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg, 
+    hsl(var(--primary)) 0%, 
+    hsl(var(--player1)) 50%, 
+    hsl(var(--player2)) 100%
+  );
+}
