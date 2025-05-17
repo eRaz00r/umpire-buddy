@@ -41,7 +41,7 @@ export default function MatchWinner() {
       </div>
       
       <div className="match-info mb-6">
-        <div className="text-center">
+        <div className="text-center text-white">
           <div className="flex items-center justify-center mb-1">
             <TimerIcon size={16} className="mr-1" />
             <span>Total Points: {state.totalPoints}</span>
@@ -54,7 +54,7 @@ export default function MatchWinner() {
       
       <Card className="w-full border-border shadow-sm mb-6">
         <CardHeader className="text-center pb-2">
-          <h2 className="text-xl font-semibold tracking-tight">🏆 Winner 🏆</h2>
+          <h2 className="text-xl font-semibold tracking-tight text-white">🏆 Winner 🏆</h2>
         </CardHeader>
         <CardContent className="text-center pb-4">
           <div className="alert-bg p-4 rounded-lg">
