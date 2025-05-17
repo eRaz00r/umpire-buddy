@@ -1,11 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { useMatch } from '@/lib/match-context';
-import { CourtSide, ServingPlayer } from '@/lib/types';
+import { ServingPlayer } from '@/lib/types';
 import MatchWinner from '@/components/match-winner';
-import { TennisBallIcon, CourtIcon, TimerIcon } from './Icons';
+import { TennisBallIcon, CourtIcon } from './Icons';
 
 export default function MatchScoreBoard() {
   const { state, dispatch } = useMatch();
@@ -35,9 +33,6 @@ export default function MatchScoreBoard() {
   const servingPlayerName = state.servingPlayer === 1 
     ? state.player1.name 
     : state.player2.name;
-
-  // Determine if we need to show a court end switch alert
-  const showEndSwitchAlert = state.pointsUntilEndSwitch === 0;
   
   // Check if undo is available
   const canUndo = state.history.length > 0;
