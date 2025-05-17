@@ -42,31 +42,42 @@ export default function MatchScoreBoard() {
     <div className="w-full min-h-screen court-pattern">
       <div className="container">
         <div className="header">
-          <div className="flex justify-center items-center">
             <Image 
               src="/umpire-buddy-logo-transparent-bg.png" 
               alt="Umpire Buddy" 
-              width={150} 
-              height={60} 
-              className="h-auto"
+              width={100} 
+              height={30} 
+              className="h-auto mx-auto"
             />
-          </div>
         </div>
         
-        {/* Match Info */}
-        <div className="match-info">
-          <div className="flex justify-between items-center flex-wrap gap-2">
-            <div className="flex items-center">
-              <CourtIcon size={16} className="mr-1 text-primary" />
-              <span className="highlight-text">Points: {state.totalPoints}</span>
-            </div>
-            {state.pointsUntilEndSwitch > 0 ? (
-              <div className="highlight-text">
-                {state.pointsUntilEndSwitch} more {state.pointsUntilEndSwitch === 1 ? 'point' : 'points'} to switch
+        {/* Match and Serving Info Row */}
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 sm:mb-4">
+          {/* Match Info */}
+          <div className="flex-1 p-2 rounded-lg shadow-md border border-white flex items-center">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap gap-2">
+                <div className="flex items-center">
+                  <CourtIcon size={16} className="mr-1 text-primary" />
+                  <span className="highlight-text">Points: {state.totalPoints}</span>
+                </div>
+                {state.pointsUntilEndSwitch > 0 ? (
+                  <div className="highlight-text">
+                    {state.pointsUntilEndSwitch} more {state.pointsUntilEndSwitch === 1 ? 'point' : 'points'} to switch
+                  </div>
+                ) : (
+                  <div className="alert-bg px-2 py-1 rounded-md font-bold">Switch ends now!</div>
+                )}
               </div>
-            ) : (
-              <div className="alert-bg px-2 py-1 rounded-md font-bold">Switch ends now!</div>
-            )}
+            </div>
+          </div>
+
+          {/* Serving Info */}
+          <div className="flex-1 p-2 rounded-lg shadow-md border border-white flex items-center justify-center">
+            <div className="flex items-center justify-center">
+              <TennisBallIcon size={24} className="mr-2 text-primary" />
+              <span className="highlight-text text-sm sm:text-base font-bold">{servingPlayerName} serves from the {state.servingSide.toUpperCase()} side</span>
+            </div>
           </div>
         </div>
 
@@ -103,14 +114,6 @@ export default function MatchScoreBoard() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Serving Info - More responsive */}
-        <div className="set-card mb-3 sm:mb-4 text-center rounded-lg shadow-md border border-primary">
-          <p className="flex items-center justify-center flex-wrap">
-            <TennisBallIcon size={24} className="mr-2 text-primary" />
-            <span className="highlight-text text-sm sm:text-base md:text-lg font-bold">{servingPlayerName} serves from the {state.servingSide} side</span>
-          </p>
         </div>
 
         {/* Point Scoring Buttons */}
