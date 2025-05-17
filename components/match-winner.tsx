@@ -40,7 +40,7 @@ export default function MatchWinner() {
         </h1>
       </div>
       
-      <div className="match-info mb-6">
+      <div className="match-info mb-4 sm:mb-6">
         <div className="text-center text-white">
           <div className="flex items-center justify-center mb-1">
             <TimerIcon size={16} className="mr-1" />
@@ -52,14 +52,14 @@ export default function MatchWinner() {
         </div>
       </div>
       
-      <Card className="w-full border-border shadow-sm mb-6">
+      <Card className="w-full border-border shadow-sm mb-4 sm:mb-6">
         <CardHeader className="text-center pb-2">
           <h2 className="text-xl font-semibold tracking-tight text-white">🏆 Winner 🏆</h2>
         </CardHeader>
         <CardContent className="text-center pb-4">
-          <div className="alert-bg p-4 rounded-lg">
+          <div className="alert-bg p-3 sm:p-4 rounded-lg">
             <p className="huge-text mb-2">{winnerName}</p>
-            <p className="text-xl">Final Score: {winnerScore} - {loserScore}</p>
+            <p className="text-lg sm:text-xl">Final Score: {winnerScore} - {loserScore}</p>
           </div>
         </CardContent>
       </Card>
@@ -69,7 +69,7 @@ export default function MatchWinner() {
         {canUndo && (
           <button 
             onClick={handleUndoPoint}
-            className="w-full btn btn-secondary"
+            className="w-full btn btn-secondary touch-button"
           >
             Undo Last Point
           </button>
@@ -83,7 +83,7 @@ export default function MatchWinner() {
         </button>
         
         <button 
-          className="w-full btn btn-secondary"
+          className="w-full btn btn-secondary touch-button"
           onClick={handleNewMatch}
         >
           New Match

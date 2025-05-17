@@ -54,7 +54,7 @@ export default function MatchSetup() {
               placeholder="Enter player 1 name"
               value={player1Name}
               onChange={(e) => setPlayer1Name(e.target.value)}
-              className="bg-white text-black placeholder:text-gray-500"
+              className="bg-white text-black placeholder:text-gray-500 h-12"
             />
           </div>
           <div className="space-y-2">
@@ -64,23 +64,23 @@ export default function MatchSetup() {
               placeholder="Enter player 2 name"
               value={player2Name}
               onChange={(e) => setPlayer2Name(e.target.value)}
-              className="bg-white text-black placeholder:text-gray-500"
+              className="bg-white text-black placeholder:text-gray-500 h-12"
             />
           </div>
           
-          <div className="space-y-2 pt-4">
+          <div className="space-y-2 pt-2 sm:pt-4">
             <Label className="text-white">Who serves first?</Label>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
               <button
                 type="button"
-                className={`flex-1 btn ${firstServer === 1 ? 'player1-bg' : 'btn-secondary'}`}
+                className={`flex-1 btn touch-button ${firstServer === 1 ? 'player1-bg' : 'btn-secondary'}`}
                 onClick={() => setFirstServer(1)}
               >
                 {player1Name || 'Player 1'}
               </button>
               <button
                 type="button"
-                className={`flex-1 btn ${firstServer === 2 ? 'player2-bg' : 'btn-secondary'}`}
+                className={`flex-1 btn touch-button ${firstServer === 2 ? 'player2-bg' : 'btn-secondary'}`}
                 onClick={() => setFirstServer(2)}
               >
                 {player2Name || 'Player 2'}

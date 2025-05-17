@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Mobile-first media queries */
+/* Mobile (default) */
+/* Tablet and up: @media (min-width: 640px) - sm */
+/* Desktop: @media (min-width: 1024px) - lg */
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -257,7 +262,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Layout */
 .container {
-  @apply p-4 mx-auto max-w-3xl;
+  @apply w-full px-4 mx-auto;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 540px;
+  }
 }
 
 .header {
@@ -348,25 +360,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .score-text {
-  font-size: 2.5rem;
-  font-weight: bold;
-  letter-spacing: -0.02em;
-  color: hsl(var(--primary)); /* US Open yellow */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  @apply text-[2.25rem] sm:text-[3rem] font-bold;
+  color: hsl(var(--primary));
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .huge-text {
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: hsl(var(--primary)); /* US Open yellow */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  @apply text-2xl sm:text-4xl font-extrabold tracking-tight;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* Touch-friendly elements */
 .touch-button {
-  @apply py-4 px-6 text-xl font-bold rounded-lg;
-  min-height: 3.5rem;
+  @apply py-3 min-h-[48px] transition-colors;
+  touch-action: manipulation;
+}
+
+/* Optimize form inputs for touch */
+.input {
+  @apply h-12; /* Increase height for better touch targets */
 }
 
 /* Better mobile touch behavior */

@@ -48,7 +48,7 @@ export default function MatchScoreBoard() {
       
       {/* Match Info */}
       <div className="match-info">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-wrap gap-2">
           <div className="flex items-center">
             <CourtIcon size={16} className="mr-1 text-primary" />
             <span className="highlight-text">Points: {state.totalPoints}</span>
@@ -63,8 +63,8 @@ export default function MatchScoreBoard() {
         </div>
       </div>
 
-      {/* Player Cards */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      {/* Player Cards - Updated for mobile-first */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <div className={`player-card player1-card ${state.servingPlayer === 1 ? 'point-won' : ''}`}>
           <div className="player1-bg rounded-t-lg py-2 px-3 mb-3">
             <div className="player-name">{state.player1.name}</div>
@@ -99,15 +99,15 @@ export default function MatchScoreBoard() {
       </div>
 
       {/* Serving Info */}
-      <div className="set-card py-5 px-4 mb-4 text-center rounded-lg shadow-md border border-primary">
+      <div className="set-card py-4 sm:py-5 px-3 sm:px-4 mb-4 text-center rounded-lg shadow-md border border-primary">
         <p className="flex items-center justify-center">
           <TennisBallIcon size={28} filled={true} className="mr-3 text-primary" />
-          <span className="highlight-text text-lg font-bold">{servingPlayerName} serves from the {state.servingSide} side</span>
+          <span className="highlight-text text-base sm:text-lg font-bold">{servingPlayerName} serves from the {state.servingSide} side</span>
         </p>
       </div>
 
       {/* Point Scoring Buttons */}
-      <div className="grid grid-cols-2 gap-3 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <button 
           onClick={() => handlePointWon(1)}
           className="btn btn-primary touch-button player1-bg"
@@ -122,8 +122,8 @@ export default function MatchScoreBoard() {
         </button>
       </div>
 
-      {/* Action Buttons */}
-      <div className="grid grid-cols-3 gap-2">
+      {/* Action Buttons - Updated for mobile */}
+      <div className="grid grid-cols-3 gap-2 mt-4">
         <button 
           onClick={handleUndoPoint}
           className="btn btn-secondary"
