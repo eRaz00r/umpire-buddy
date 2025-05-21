@@ -36,15 +36,13 @@ export default function MatchWinner() {
     <div className="w-full min-h-screen court-pattern">
       <div className="container">
         <div className="header">
-          <div className="flex justify-center items-center">
             <Image 
               src="/umpire-buddy-logo-transparent-bg.png" 
               alt="Umpire Buddy" 
-              width={150} 
-              height={60} 
-              className="h-auto"
+              width={100} 
+              height={30} 
+              className="h-auto mx-auto"
             />
-          </div>
         </div>
         
         <div className="match-info mb-4 sm:mb-6">
